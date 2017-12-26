@@ -26,6 +26,15 @@ class ToDoList extends React.Component {
         });
     };
 
+    delete = (key) => {
+        const tasks = this.state.tasks.slice();
+        const filteredTasks = tasks.filter(x => x.key !== key);
+
+        this.setState({
+            tasks: filteredTasks
+        })
+    }
+
     handleOnChange = (e) => {
         const updatedTaskName = e.target.value;
 
@@ -43,7 +52,7 @@ class ToDoList extends React.Component {
                         <button type="submit">Add</button>
                     </form>
                 </div>
-                <ToDoItems entries={this.state.tasks}/>
+                <ToDoItems entries={this.state.tasks} delete={this.delete}/>
             </div>
         );
     }

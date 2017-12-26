@@ -1,12 +1,13 @@
 import React from 'react';
 
 class ToDoItems extends React.Component {
-    constructor(props) {
-        super(props)
-    }
 
     createTasks = (task) => {
-        return <li key={task.key}>{task.item}</li>
+        return <li key={task.key} onClick={() => this.clickHandler(task.key)}>{task.item}</li>
+    }
+
+    clickHandler = (key) => {
+        this.props.delete(key);
     }
 
     render() {
